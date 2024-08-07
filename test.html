@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scoreboard Interface</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1b1b1b;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        .scoreboard {
+            width: 800px;
+            margin: 50px auto;
+            background-color: #2c2c2c;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #444;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+        .header .title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .header .round {
+            font-size: 18px;
+            color: #d1d1d1;
+        }
+        .team {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #444;
+            padding: 10px 0;
+        }
+        .team:last-child {
+            border-bottom: none;
+        }
+        .team .team-name {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .team .score {
+            font-size: 18px;
+        }
+        .team .players {
+            display: flex;
+            flex-direction: column;
+        }
+        .player {
+            font-size: 16px;
+        }
+        .update-panel {
+            margin-top: 20px;
+            background-color: #333;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .update-panel input {
+            padding: 5px;
+            margin: 5px 0;
+            width: calc(100% - 20px);
+        }
+        .update-panel button {
+            padding: 10px;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .update-panel button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="scoreboard">
+        <div class="header">
+            <div class="title">Scoreboard</div>
+            <div class="round">Round <span id="round-number">3</span></div>
+        </div>
+        <div id="team-alpha" class="team">
+            <div class="team-name">Team Alpha</div>
+            <div class="score" id="score-alpha">10</div>
+            <div class="players">
+                <div class="player">Player1 - 5 kills</div>
+                <div class="player">Player2 - 3 kills</div>
+                <div class="player">Player3 - 2 kills</div>
+            </div>
+        </div>
+        <div id="team-beta" class="team">
+            <div class="team-name">Team Beta</div>
+            <div class="score" id="score-beta">8</div>
+            <div class="players">
+                <div class="player">Player4 - 4 kills</div>
+                <div class="player">Player5 - 3 kills</div>
+                <div class="player">Player6 - 1 kill</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="update-panel">
+        <h3>Update Scoreboard</h3>
+        <label for="team-name-alpha">Team Alpha Name:</label>
+        <input type="text" id="team-name-alpha" placeholder="New Team Alpha Name">
+        <label for="score-alpha">Team Alpha Score:</label>
+        <input type="number" id="score-alpha" placeholder="New Team Alpha Score">
+        
+        <label for="team-name-beta">Team Beta Name:</label>
+        <input type="text" id="team-name-beta" placeholder="New Team Beta Name">
+        <label for="score-beta">Team Beta Score:</label>
+        <input type="number" id="score-beta" placeholder="New Team Beta Score">
+
+        <button onclick="updateScoreboard()">Update Scores</button>
+    </div>
+
+    <script>
+        function updateScoreboard() {
+            // Update Team Alpha
+            var teamNameAlpha = document.getElementById('team-name-alpha').value;
+            var scoreAlpha = document.getElementById('score-alpha').value;
+            if (teamNameAlpha) {
+                document.querySelector('#team-alpha .team-name').textContent = teamNameAlpha;
+            }
+            if (scoreAlpha) {
+                document.getElementById('score-alpha').textContent = scoreAlpha;
+            }
+
+            // Update Team Beta
+            var teamNameBeta = document.getElementById('team-name-beta').value;
+            var scoreBeta = document.getElementById('score-beta').value;
+            if (teamNameBeta) {
+                document.querySelector('#team-beta .team-name').textContent = teamNameBeta;
+            }
+            if (scoreBeta) {
+                document.getElementById('score-beta').textContent = scoreBeta;
+            }
+        }
+    </script>
+</body>
+</html>
